@@ -18,6 +18,12 @@ public class URLService {
 
     public String createShortenedURL(String originalURL, String customAlias) {
         String shortenedURL = (customAlias != null && customAlias.length() <= 16) ? customAlias : generateUniqueHash();
+
+        //alias check to ensure uniqueness
+        if (customAlias != null && urlRepository.findByShortenedURL(customAlias) != null) {
+            throw new IllegalArgumentException("Custom alias already in use.");
+        }
+
         ShortenedURL url = new ShortenedURL();
         url.setOriginalURL(originalURL);
         url.setShortenedURL(shortenedURL);
