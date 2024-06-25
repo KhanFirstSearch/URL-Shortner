@@ -6,6 +6,11 @@ async function shortenURL() {
     console.log('Original URL:', originalURL);
     console.log('Custom Alias:', customAlias);
 
+    if (!originalURL) {
+        document.getElementById('result').innerText = 'Error: Please enter a valid URL.';
+        return;
+    }
+
     try {
         const response = await fetch('http://localhost:8080/api/shorten', {
             method: 'POST',

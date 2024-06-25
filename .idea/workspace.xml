@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d67aa084-2330-497f-bf7e-a35216946a2e" name="Changes" comment="Update with valid dependencies and other files.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.js" afterDir="false" />
+    <list default="true" id="d67aa084-2330-497f-bf7e-a35216946a2e" name="Changes" comment="added some debug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/URLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/URLController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/url/ShortenedURL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/url/ShortenedURL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +111,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719085470616</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added front-end">
+      <option name="closed" value="true" />
+      <created>1719316943286</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719316943286</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added some debug">
+      <option name="closed" value="true" />
+      <created>1719317010235</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719317010235</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,7 +143,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update with valid dependencies and other files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update with valid dependencies and other files." />
+    <MESSAGE value="Added front-end" />
+    <MESSAGE value="added some debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some debug" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
