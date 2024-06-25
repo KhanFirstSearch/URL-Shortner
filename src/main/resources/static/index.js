@@ -2,10 +2,7 @@ async function shortenURL() {
     const originalURL = document.getElementById('originalURL').value;
     const customAlias = document.getElementById('customAlias').value;
 
-    //debugging
-    console.log('Original URL:', originalURL);
-    console.log('Custom Alias:', customAlias);
-
+    //Check to see if the URL is valid
     try {
         new URL(originalURL);
     } catch (e) {
@@ -25,17 +22,20 @@ async function shortenURL() {
             })
         });
 
-        //more debugging
-        console.log('Response status:', response.status);
-
         if (!response.ok) {
-            throw new Error('Network response is not working ' + response.statusText);
+            const errorText = await response.text();
+            throw new Error(errorText);
         }
 
         const shortenedURL = await response.text();
-        const fullShortenedURL = `${window.location.origin}/api/${shortenedURL}`;
-        console.log('Shortened URL:', fullShortenedURL);
+        console.log('Response from backend:', shortenedURL);
 
+        // eck if the response is empty
+        if (!shortenedURL) {
+            throw new Error('The shortened URL is empty.');
+        }
+
+        const fullShortenedURL = `${window.location.origin}/api/${shortenedURL}`;
         document.getElementById('result').innerHTML = `Shortened URL: <a href="${fullShortenedURL}" target="_blank">${fullShortenedURL}</a>`;
     } catch (error) {
         console.error('Error:', error);

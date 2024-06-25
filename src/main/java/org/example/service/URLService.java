@@ -14,16 +14,25 @@ public class URLService {
     private URLRepo urlRepository;
 
     private final int URL_EXPIRY_YEARS = 100;
-
-
     public String createShortenedURL(String originalURL, String customAlias) {
-        String shortenedURL = (customAlias != null && customAlias.length() <= 16) ? customAlias : generateUniqueHash();
+        String shortenedURL;
 
-        //alias check to ensure uniqueness
-        if (customAlias != null && urlRepository.findByShortenedURL(customAlias) != null) {
-            throw new IllegalArgumentException("Custom alias already in use.");
+        // Check if alias is null, if so, generate custom hash.
+        if (customAlias != null && !customAlias.trim().isEmpty()) {
+            if (urlRepository.findByShortenedURL(customAlias) != null) {
+                throw new IllegalArgumentException("Custom alias already in use.");
+            }
+            shortenedURL = customAlias;
+        } else {
+            shortenedURL = generateUniqueHash();
         }
 
+        // Ensure the shortened URL is not empty
+        if (shortenedURL == null || shortenedURL.trim().isEmpty()) {
+            throw new IllegalArgumentException("The shortened URL is empty.");
+        }
+
+        // Create and save the new shortened URL
         ShortenedURL url = new ShortenedURL();
         url.setOriginalURL(originalURL);
         url.setShortenedURL(shortenedURL);
@@ -35,11 +44,10 @@ public class URLService {
 
     public String getOriginalURL(String shortenedUrl) {
         ShortenedURL url = urlRepository.findByShortenedURL(shortenedUrl);
-        if (url != null && url.getExpiryDate().isAfter(LocalDateTime.now())) {
-            return url.getOriginalURL();
-        } else {
+        if (url == null || url.getExpiryDate().isBefore(LocalDateTime.now())) {
             throw new URLNotFoundException("URL was not found or has expired.");
         }
+        return url.getOriginalURL();
     }
 
     private String generateUniqueHash() {
