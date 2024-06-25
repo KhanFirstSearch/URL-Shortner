@@ -11,7 +11,9 @@ public class URLController {
     private URLService urlService;
 
     @PostMapping("/shorten")
-    public String shortenUrl(@RequestParam String originalURL, @RequestParam(required = false) String customAlias) {
+    public String shortenURL(@RequestParam String originalURL, @RequestParam(required = false) String customAlias) {
+        System.out.println("Received URL: " + originalURL);
+        System.out.println("Received custom alias: " + customAlias);
         return urlService.createShortenedURL(originalURL, customAlias);
     }
 
@@ -20,4 +22,3 @@ public class URLController {
         return urlService.getOriginalURL(shortenedURL);
     }
 }
-
